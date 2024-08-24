@@ -1,0 +1,17 @@
+---
+
+-name: Install and configure nginx
+hosts: webserver
+become: root
+
+tasks: 
+-name: Install nginx
+  apt: 
+   name: ngnix
+   state: present
+
+-name: start ngnix
+sevice: 
+      name: ngnix
+      state: started
+      enabled: true 
