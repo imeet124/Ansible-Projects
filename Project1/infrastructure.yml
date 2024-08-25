@@ -1,0 +1,27 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: Launch EC2 instances
+      ec2:
+        key_name: aws-key
+        instance_type: t2.micro
+        image: ami-0c55b159cbfafe1f0
+        wait: yes
+        count: 1
+        region: us-east-1
+        group: web_sg
+        instance_tags:
+          Name: "WebServer"
+        vpc_subnet_id: subnet-abc123
+      register: ec2
+
+    - name: Add new instances to the web group in inventory
+      add_host:
+        hostname: "{{ item.public_ip }}"
+        groupname: web
+      loop: "{{ ec2.instances }}"
+
+    # Repeat the above tasks for app and db servers
