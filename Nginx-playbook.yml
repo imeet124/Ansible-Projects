@@ -10,8 +10,8 @@ tasks:
    name: ngnix
    state: present
 
--name: start ngnix
+-name: start nginx
 sevice: 
-      name: ngnix
+      name: nginx
       state: started
       enabled: true 
