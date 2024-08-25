@@ -1,0 +1,41 @@
+---
+- hosts: web
+  become: yes
+
+  roles:
+    - common
+    - webserver
+
+# roles/webserver/tasks/main.yml
+---
+- name: Install Nginx
+  yum:
+    name: nginx
+    state: present
+
+- name: Start and enable Nginx
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: Copy Nginx config
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+  notify: Restart Nginx
+
+- name: Ensure SSL/TLS is configured (optional)
+  include_role:
+    name: ssl_cert
+
+# roles/webserver/handlers/main.yml
+---
+- name: Restart Nginx
+  service:
+    name: nginx
+    state: restarted
+
+# roles/webserver/templates/nginx.conf.j2
+---
+# (Add your Nginx configuration here)
