@@ -1,0 +1,15 @@
+---
+- hosts: app
+  become: yes
+
+  tasks:
+    - name: Pull latest application code
+      git:
+        repo: 'https://github.com/your-repo/app.git'
+        dest: /opt/app
+        version: HEAD
+
+    - name: Restart application service
+      systemd:
+        name: gunicorn
+        state: restarted
