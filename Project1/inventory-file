@@ -1,1 +1,13 @@
+[web]
+webserver ansible_host=ec2-xx-xx-xx-xx.compute-1.amazonaws.com
+
+[app]
+appserver ansible_host=ec2-xx-xx-xx-xx.compute-1.amazonaws.com
+
+[db]
+dbserver ansible_host=ec2-xx-xx-xx-xx.compute-1.amazonaws.com
+
+[all:vars]
+ansible_user=ec2-user
+ansible_ssh_private_key_file=~/.ssh/aws-key.pem
 
