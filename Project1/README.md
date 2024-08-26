@@ -33,14 +33,14 @@ Monitoring and Alerts:
 
 Use Ansible to install and configure a monitoring tool like Prometheus or Grafana on a dedicated monitoring server.
 Set up alerts for critical metrics (e.g., CPU usage, memory usage, disk space).
-Backup and Recovery:
-
-Implement automated database backups using Ansible.
+Backup and Recovery: Implement automated database backups using Ansible.
 Create playbooks for restoring the database from a backup in case of failure.
+
+
 Skills Practiced
-Ansible Playbook and Role Creation
-Dynamic Inventory Management
-AWS EC2, Security Groups, and ELB Configuration
+ Ansible Playbook and Role Creation
+ Dynamic Inventory Management
+ AWS EC2, Security Groups, and ELB Configuration
 SSL/TLS Certificate Management
 CI/CD Pipeline Integration
 Application Deployment and Management
